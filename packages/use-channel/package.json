@@ -1,7 +1,7 @@
 {
   "name": "@flakevine/use-channel",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Make react-query queries realtime on all of your clients with one extra line of code",
   "main": "src/index.ts",
   "types": "src/index.ts",
   "scripts": {
