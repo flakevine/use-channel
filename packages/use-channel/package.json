@@ -4,7 +4,6 @@
   "description": "Make react-query queries realtime on all of your clients with one extra line of code",
   "main": "src/index.ts",
   "types": "src/index.ts",
-  "private": false,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
