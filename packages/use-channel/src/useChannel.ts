@@ -1,7 +1,6 @@
 import { useQueryClient, useQuery, useMutation } from "@tanstack/react-query";
 import { Subscription, NatsError, StringCodec } from "nats.ws";
 import { useCallback, useEffect, useState } from "react";
-import { useNatsConnection } from "./useNatsConnection";
 import type {
     QueryKey,
     QueryFunction,
@@ -11,6 +10,7 @@ import type {
     UseMutationOptions,
     UseMutationResult,
 } from "@tanstack/react-query";
+import { usePubsubMethod } from "./useChannelContext";
 
 const sc = StringCodec();
 
@@ -18,9 +18,7 @@ export const useChannelBase = (
     channel: string,
     onMessage: (err: NatsError | null, msg: string) => void
 ) => {
-    const { connection, subscribe, publish } = useNatsConnection([
-        "ws://localhost:4444",
-    ]);
+    const { connection, subscribe, publish } = usePubsubMethod();
     const [sub, setSubscription] = useState<Subscription>();
     const [isConnecting, setIsConnecting] = useState<boolean>(true);
 

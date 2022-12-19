@@ -12,8 +12,8 @@ const postMessage = async ({ message }: { message: string }) => {
 }
 
 function App() {
-  const [message, setMessage] = useState<string>('');
   const messages = useChannel(['chat'], fetchMessages, postMessage);
+  const [message, setMessage] = useState<string>('');
 
   if (messages.channel.isConnecting || messages.query.isLoading) {
     return <div>Loading...</div>;
