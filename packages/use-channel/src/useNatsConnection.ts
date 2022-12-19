@@ -19,13 +19,19 @@ export const useNatsConnection = (servers: string | string[]) => {
         });
     }, []);
 
-    const subscribe = useCallback((channel: string, opts?: SubscriptionOptions) => {
-        return nc?.subscribe(channel, opts);
-    }, [nc])
+    const subscribe = useCallback(
+        (channel: string, opts?: SubscriptionOptions) => {
+            return nc?.subscribe(channel, opts);
+        },
+        [nc]
+    );
 
-    const publish = useCallback((channel: string, message: string) => {
-        nc?.publish(channel, sc.encode(message));
-    }, [nc])
+    const publish = useCallback(
+        (channel: string, message: string) => {
+            nc?.publish(channel, sc.encode(message));
+        },
+        [nc]
+    );
 
     return { connection: nc, subscribe, publish };
 };
