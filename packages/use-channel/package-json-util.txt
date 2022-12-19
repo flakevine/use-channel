@@ -1,0 +1,11 @@
+"main": "build/lib/index.js",
+"types": "build/lib/index.d.ts",
+"module": "build/lib/index.esm.js",
+ "exports": {
+   ".": {
+     "types": "./build/lib/index.d.ts",
+     "import": "./build/lib/index.mjs",
+     "default": "./build/lib/index.js"
+   },
+   "./package.json": "./package.json"
+ },
