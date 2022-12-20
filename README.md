@@ -32,6 +32,7 @@ Make React-Query realtime for all of your clients with one extra line of code
 
 - Sync all your clients with the backend's data
   - When data from backend changes, clients are notified and revalidates the current data
+- Plug and play, you can easily add it to an existing code using react-query to add realtime functionality between clients
 - Simple API interface to use
 - Simple configuration
 - You can achieve type-safety between your client and server by using [trpc's](https://trpc.io/) client functions instead of `fetch` or `axios` on the QueryFn or MutationFn
