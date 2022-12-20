@@ -4,6 +4,7 @@ import { useNatsConnection } from "./useNatsConnection"
 export type PubsubConfig = {
     provider: 'nats'
     url: string
+    logger?: boolean
 }
 
 type ChannelContextProps = {

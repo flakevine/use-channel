@@ -1,3 +1,4 @@
+import { useLogger } from './useLogger';
 import { useQueryClient, useQuery, useMutation } from "@tanstack/react-query";
 import { Subscription, NatsError, StringCodec } from "nats.ws";
 import { useCallback, useEffect, useState } from "react";
@@ -21,10 +22,11 @@ export const useChannelBase = (
     const { connection, subscribe, publish } = usePubsubMethod();
     const [sub, setSubscription] = useState<Subscription>();
     const [isConnecting, setIsConnecting] = useState<boolean>(true);
+    const logger = useLogger();
 
     useEffect(() => {
         if (connection) {
-            console.log("connecting to channel", channel);
+            logger.log("connecting to channel", channel);
             const sub = subscribe(channel, {
                 callback: (err, msg) => {
                     onMessage(err, sc.decode(msg.data));
@@ -59,6 +61,7 @@ export const useChannel: <QueryT, MutationT, MutationInputT>(
     mutation: UseMutationResult<MutationT, any, MutationInputT, any>;
     channel: ReturnType<typeof useChannelBase>;
 } = (queryKey, queryFn, mutationFn, opts) => {
+    const logger = useLogger();
     const client = useQueryClient();
     const query = useQuery(queryKey, {
         queryFn,
@@ -66,7 +69,7 @@ export const useChannel: <QueryT, MutationT, MutationInputT>(
     });
 
     const channel = useChannelBase(JSON.stringify(queryKey), (err, msg) => {
-        console.log("invalidating query with the key", queryKey);
+        logger.log("Invalidating query with the key", queryKey);
         client.invalidateQueries(queryKey);
     });
 

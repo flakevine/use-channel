@@ -9,7 +9,7 @@ const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <QueryClientProvider client={queryClient}>
-    <ChannelContextProvider opts={{provider: 'nats', url: 'ws://localhost:4444'}}>
+    <ChannelContextProvider opts={{provider: 'nats', url: 'ws://localhost:4444', logger: true}}>
       <App />
       <ReactQueryDevtools initialIsOpen={false} />
     </ChannelContextProvider>
