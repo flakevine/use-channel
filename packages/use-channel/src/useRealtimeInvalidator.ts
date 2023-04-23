@@ -7,7 +7,7 @@ import { useChannelBase } from "./useChannel";
 export const useRealtimeInvalidator = (queryKey: QueryKey) => {
     const logger = useLogger();
     const client = useQueryClient();
-    const channel = useChannelBase(JSON.stringify(queryKey), (err, msg) => {
+    const channel = useChannelBase(JSON.stringify(queryKey), (_err, _msg) => {
         logger.log("Invalidating query with the key", queryKey);
         client.invalidateQueries(queryKey);
     });

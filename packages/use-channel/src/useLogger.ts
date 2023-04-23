@@ -9,7 +9,7 @@ export const useLogger = () => {
     const opts = useContext(ChannelContext);
 
     if (!opts.logger) {
-        return { log: (...data: any[]) => {} }
+        return { log: (..._data: any[]) => {} }
     }
 
     return { log };

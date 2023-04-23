@@ -68,7 +68,7 @@ export const useChannel: <QueryT, MutationT, MutationInputT>(
         ...opts?.query,
     });
 
-    const channel = useChannelBase(JSON.stringify(queryKey), (err, msg) => {
+    const channel = useChannelBase(JSON.stringify(queryKey), (_err, _msg) => {
         logger.log("Invalidating query with the key", queryKey);
         client.invalidateQueries(queryKey);
     });
